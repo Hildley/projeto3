@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>PicokeTrailers</title>
+</head>
+<body>
+    <nav id="menu">
+        <img id="imgmenu" src="/img/pipoca.png" alt="">
+        <ul id="listamenu">
+            <li class="itemmenu"><a href="#">Home</a></li>
+            <li class="itemmenu"><a href="#filmes">Filmes</a></li>
+            <li class="itemmenu"><a href="#Cadastrar">Cadastrar</a></li>
+        </ul>
+    </nav>
+
+    <% if(message != "") {  %>
+        <section id="messagem">
+            <p><%= message %></p> <span id="close">&times;</span>
+        </section>
+    <% }  %>
+
+    <header>
+        <article>
+            <h1>Picoke Trailers</h1>
+            <section id="textoinit">
+                <p>Seja Bem vindo ao Picoke Trailers! Aqui voce encontrarar os trailers dos seus filmes favoritos, alem de pode adicionar futuros trailer. Pegue uma picoca e uma coca cola e vem com a gente.</p>
+                <img id="imgtt" src="/img/miranha.png">
+            </section>
+        </article>
+    </header>
+
+    <section id="filmes">
+        <section class="cards">
+           <a href="https://www.youtube.com/watch?v=FDNNHh7TRN0">
+            <img src="/img/homemaranhafilme.jpg">
+            <h2 class="nome">Homem Aranha - No Way home</h2>
+                <h4 class="ano">2021</h4>
+            </a>
+        </section>
+
+        <section class="cards">
+            <a href="https://www.youtube.com/watch?v=X23XCFgdh2M">
+            <img src="/img/doutorestranhofilme.jpg">
+            <h2 class="nome">Doutor Estranho - Multiverso da loucura</h2>
+                <h4 class="ano">2022</h4>
+            </a>
+        </section>
+        <% listafilmes.forEach((filme) => { %>
+        <section class="cards">
+            <a href="<%= filme.linkf %>">
+            <img src="<%= filme.capa%>">
+            <h2 class="nome"><%= filme.nome %></h2>
+                <h4 class="ano"><%= filme.ano %></h4>    
+
+            </a>
+
+        </section>
+        <% }) %>
+    </section>
+
+    <section id="Cadastrar">
+        <h2>Cadastre um novo filme!</h2>
+        <form action="create" method="POST">
+            <div>
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome" id="nome" placeholder="Digite o nome do filme" required>
+            </div>
+
+            <div>
+                <label for="ano">Ano: </label>
+                <input type="text" name="ano" id="ano" placeholder="Digite o ano do filme" required>
+            </div>
+
+            <div>
+                <label for="capa">imagem: </label>
+                <input type="url" name="capa" id="capa" placeholder="Cole aqui o LINK da capa do filme" required>
+            </div>
+
+            <div>
+                <label for="linkf">Link: </label>
+                <input type="url" name="linkf" id="linkf" placeholder="Cole aqui o LINK do filme" required>
+            </div>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
+    <script src="/js/script.js"></script>
+
+
+</body>
+</html>
